@@ -10,3 +10,6 @@ d = response.json()
 oldPage = d["archived_snapshots"]["closest"]["url"]
 
 webbrowser.open(oldPage)
+
+
+
