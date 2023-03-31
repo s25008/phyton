@@ -1,37 +1,37 @@
-# #ZAD1
-# user_input = input("Podaj liczby rozdzielone przecinkiem: ")
-#
-# lista = [int(x) for x in user_input.split(",")]
-#
-# max = lista[0]
-# min = lista[0]
-#
-# #Wyszukiwanie max i min
-# for num in lista:
-#     if num > max:
-#         max = num
-#     if num < min:
-#         min = num
-#
-# print("Wartość maksymalna to:", max)
-# print("Wartość minimalna to:", min)
+#ZAD1
+user_input = input("Podaj liczby rozdzielone przecinkiem: ")
+
+lista = [int(x) for x in user_input.split(",")]
+
+max = lista[0]
+min = lista[0]
+
+#Wyszukiwanie max i min
+for num in lista:
+    if num > max:
+        max = num
+    if num < min:
+        min = num
+
+print("Wartość maksymalna to:", max)
+print("Wartość minimalna to:", min)
 
 #ZAD2
-# import random
-#
-# lista_miast = ["Warszawa", "Poznań", "Bydgoszcz", "Łódz", "Serock", "Wołomin", "Szczecin", "Lublin", "Białystok", "Gdańsk"]
-# plan_wycieczki = []
-#
-#
-# while len(plan_wycieczki) < 4:
-#     miasto = random.choice(lista_miast)
-#     if miasto not in plan_wycieczki:
-#         plan_wycieczki.append(miasto)
-#
-#
-# print("Twoja wycieczka obejmie następujące miasta:")
-# for i, miasto in enumerate(plan_wycieczki):
-#     print(f"{i+1}. {miasto}")
+import random
+
+lista_miast = ["Warszawa", "Poznań", "Bydgoszcz", "Łódz", "Serock", "Wołomin", "Szczecin", "Lublin", "Białystok", "Gdańsk"]
+plan_wycieczki = []
+
+
+while len(plan_wycieczki) < 4:
+    miasto = random.choice(lista_miast)
+    if miasto not in plan_wycieczki:
+        plan_wycieczki.append(miasto)
+
+
+print("Twoja wycieczka obejmie następujące miasta:")
+for i, miasto in enumerate(plan_wycieczki):
+    print(f"{i+1}. {miasto}")
 
 
 #ZAD3
