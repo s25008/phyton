@@ -80,7 +80,7 @@ def send_email(email, grade):
         message = f'Szanowny/a {students[email]["first_name"]} {students[email]["last_name"]},\n\n' \
                   f'Zostanie Ci wystawiona ocena {grade} z przedmiotu Podstawy Programowania Python.\n\n' \
                   f'Pozdrawiam,\n' \
-                  f'Profesor XYZ'
+                  f'XYZ'
         try:
             server = smtplib.SMTP(smtp_server, port)
             server.starttls()
@@ -104,5 +104,3 @@ for email in students:
     if students[email]['status'] != 'MAILED':
         send_email(students[email]['email'], students[email]["grade"])
         save_students_to_file(students)
-
-print(students)
