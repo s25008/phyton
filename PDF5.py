@@ -74,8 +74,8 @@ def send_email(email, grade):
     if email in students and students[email]['status'] != 'MAILED':
         smtp_server = 'smtp.gmail.com'
         port = 587
-        sender_email = 'adamowskia696@gmail.com'
-        sender_password = 'omaanlvbbmjlmoks'
+        sender_email = 'twojmail'
+        sender_password = 'haslodoaplikacji'
         receiver_email = email
         message = f'Szanowny/a {students[email]["first_name"]} {students[email]["last_name"]},\n\n' \
                   f'Zostanie Ci wystawiona ocena {grade} z przedmiotu Podstawy Programowania Python.\n\n' \
@@ -91,6 +91,7 @@ def send_email(email, grade):
             print(f'Wysłano email na adres {email}')
         except:
             print('Wystąpił błąd podczas wysyłania emaila!')
+
 
 
 print(students)
