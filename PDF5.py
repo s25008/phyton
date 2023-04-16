@@ -93,8 +93,8 @@ def send_email(email, grade):
             print('Wystąpił błąd podczas wysyłania emaila!')
 
 
-
 print(students)
+
 
 def save_students_to_file(students):
     with open('students.txt', mode='w') as file:
