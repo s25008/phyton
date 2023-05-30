@@ -26,12 +26,10 @@ zmienna_objasniana = "Type"
 
 
 #Zadanie1 przypisz nazwy kolumn z df w jednej linii:   (2pkt)
-print("zad1")
 wynik1 = list(df.columns)
 print(wynik1)
 
 #Zadanie 2: Wypisz liczbę wierszy oraz kolumn ramki danych w jednej linii.  (2pkt)
-print("zad2")
 wynik2 = f"Liczba wierszy: {df.shape[0]}, Liczba kolumn: {df.shape[1]}"
 print(wynik2)
 
@@ -60,7 +58,6 @@ class Wine:
         return Wine(self.variables.copy(), self.target)
 
 #Zadanie 3 Utwórz przykładowy obiekt:   (3pkt)
-print("zad3")
 wynik3 = Wine(variables=["Alcohol", "Malic_acid", "Ash", "Alcalinity_of_ash", "Magnesium", "Total_phenols",
                          "Flavanoids", "Nonflavanoid_phenols", "Proanthocyanins", "Color_intensity", "Hue",
                          "OD280_OD315_of_diluted_wines", "Proline"],
@@ -73,7 +70,7 @@ print(wynik3)
 #Nie podmieniaj listy, dodawaj elementy.
 ##Uwaga! zobacz w jakiej kolejności podawane są zmienne objaśniające i objaśniana.
 # Podpowiedź zobacz w pliktextowy.txt
-print("zad4")
+
 
 wineList = []
 for index, row in df.iterrows():
@@ -87,7 +84,7 @@ print(wynik4)
 #Zadanie5 - Weź ostatni element z listy i na podstawie         (3pkt)
 #wyniku funkcji repr utwórz nowy obiekt - eval(repr(obiekt))
 #do wyniku przypisz zmienną objaśnianą z tego obiektu:
-print("zad5")
+
 
 last_wine = wineList[-1]
 new_wine = eval(repr(last_wine))
@@ -101,7 +98,6 @@ print(wynik5)
 #Następnie wczytaj dane z tabeli wybierając z bazy danych tylko wiersze z typem wina nr 3
 # i zapisz je do nowego data frame:
 
-print("zad6")
 
 conn = sqlite3.connect('wines_Kacper_Gajowniczek.db')
 df.to_sql('wines', conn, if_exists='replace', index=False)
@@ -119,7 +115,6 @@ print(wynik6.shape)
 
 #Zadanie 7                                                          (1pkt)
 #Utwórz model regresji Logistycznej z domyślnymi ustawieniami:
-print("zad7")
 
 model = LogisticRegression()
 
@@ -135,32 +130,8 @@ print(wynik7)
 # Wytenuj model na wszystkich danych bez podziału na zbiór treningowy i testowy.
 # Wykonaj sprawdzian krzyżowy, używając LeaveOneOut() zamiast KFold (Parametr cv)
 #  Podaj średnią dokładność (accuracy)
-print("zad8")
 
-X = df.drop(columns=['Type'])
-y = df['Type']
 
-# Normalizacja danych objaśniających
-X = preprocessing.normalize(X)
-
-model = LogisticRegression()
-
-# Wytrenowanie modelu na wszystkich danych
-model.fit(X, y)
-
-# Sprawdzian krzyżowy z użyciem LeaveOneOut
-loo = LeaveOneOut()
-y_true = []
-y_pred = []
-
-for train_index, test_index in loo.split(X):
-    X_train, X_test = X[train_index], X.iloc[test_index]
-    y_train, y_test = y[train_index], y.iloc[test_index]
-
-    model.fit(X_train, y_train)
-    y_true.append(y_test.iloc[0])
-    y_pred.append(model.predict(X_test)[0])
-
-wynik8 = accuracy_score(y_true, y_pred)
+wynik8 = "zad8"
 
 print(wynik8)
