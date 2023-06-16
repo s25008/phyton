@@ -54,16 +54,48 @@ print(wynik3)
 #Zadanie4 (4pkt):
 #Uzyj klasy napisanej na ostatnich zajęciach - wersji z iteratorem (wklej tutaj klasę)
 #Do przechowywania znaków kodu javy z pliku Main.java.
+class Stack:
+    def __init__(self, max_size=5):
+        self.items = []
+        self.max_size = max_size
+    def push(self, item):
+        if len(self.items) < self.max_size:
+            self.items.append(item)
+        else:
+            raise IndexError("Stack overflow")
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+        else:
+            raise IndexError("Stack is empty")
+    def is_empty(self):
+        return len(self.items) == 0
+    def size(self):
+        return len(self.items)
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if not self.is_empty():
+            return self.pop()
+        else:
+            raise StopIteration
+
+obiekt = Stack(max_size=200)
+
+with open("Main.java", "r") as file:
+    java_code = file.read()
 
 
-obiekt = " tutaj utworz obiekt tej klasy."
-wynik4="wstaw w wynik4"
+for char in java_code:
+    obiekt.push(char)
+
+
 #następnie wstaw do niej znaki z kodu javy, które wczytasz z pliku Main.java
 #ODKOMENTUJ poniższą linijkę, gdy utworzysz obiekt i dodasz do niego znaki:
 '''
 !odkomentuj wynik4!:
 '''
-#wynik4 = obiekt.size()
+wynik4 = obiekt.size()
 print(wynik4)
 
 #Zadanie 5 (4pkt):
@@ -72,8 +104,24 @@ print(wynik4)
 #funkcja ma zwrocic True albo False w zależności czy kod jest poprawny czy nie.
 
 def validation(kod_o):
-    #zamiast pass napisz swój kod
-    pass
+    stack = kod_o
+
+    opening_brackets = ["(", "{", "["]
+    closing_brackets = [")", "}", "]"]
+
+    bracket_pairs = {")": "(", "}": "{", "]": "["}
+
+    for char in stack:
+        if char in opening_brackets:
+            stack.push(char)
+        elif char in closing_brackets:
+            if stack.is_empty():
+                return False
+            top = stack.pop()
+            if top != bracket_pairs[char]:
+                return False
+
+    return stack.is_empty()
 wynik5 = validation(kod_o=obiekt)
 print(wynik5)
 
