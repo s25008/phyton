@@ -87,7 +87,10 @@ with open("Main.java", "r") as file:
 
 
 for char in java_code:
-    obiekt.push(char)
+    if char.isalpha():
+        obiekt.push(char)
+    elif char in "[]{}()<>":
+        obiekt.push(char)
 
 
 #następnie wstaw do niej znaki z kodu javy, które wczytasz z pliku Main.java
@@ -95,6 +98,8 @@ for char in java_code:
 '''
 !odkomentuj wynik4!:
 '''
+
+
 wynik4 = obiekt.size()
 print(wynik4)
 
@@ -104,24 +109,25 @@ print(wynik4)
 #funkcja ma zwrocic True albo False w zależności czy kod jest poprawny czy nie.
 
 def validation(kod_o):
+    stack1 = []
     stack = kod_o
 
-    opening_brackets = ["(", "{", "["]
-    closing_brackets = [")", "}", "]"]
+    opening_brackets = ["(", "{", "[","<"]
+    closing_brackets = [")", "}", "]",">"]
 
-    bracket_pairs = {")": "(", "}": "{", "]": "["}
+    bracket_pairs = {"(": ")", "{": "}", "[": "]","<":">"}
 
     for char in stack:
-        if char in opening_brackets:
-            stack.push(char)
-        elif char in closing_brackets:
-            if stack.is_empty():
+        if char in closing_brackets:
+            stack1.append(char)
+        elif char in opening_brackets:
+            if len(stack1) == 0:
                 return False
-            top = stack.pop()
+            top = stack1.pop()
             if top != bracket_pairs[char]:
                 return False
 
-    return stack.is_empty()
+    return len(stack1) == 0
 wynik5 = validation(kod_o=obiekt)
 print(wynik5)
 
